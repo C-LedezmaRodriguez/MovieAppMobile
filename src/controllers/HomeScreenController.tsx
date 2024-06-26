@@ -3,7 +3,7 @@ import HomeScreenService from '../services/HomeScreenService.tsx';
 
 import useAppNavigation from '../hooks/useAppNavigation.tsx';
 
-import {MOVIE_DETAIL_SCREEN} from '../constants/RoutesPath.ts';
+import {MOVIE_DETAIL_SCREEN} from '../constants/routesPath.ts';
 import {Movie} from '../models/Movie.ts';
 
 const HomeScreenController = () => {
