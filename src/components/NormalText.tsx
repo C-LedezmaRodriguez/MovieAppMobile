@@ -17,7 +17,11 @@ const NormalText = ({
   color = lightTheme.text,
 }: NormalTextProps) => {
   const styles = createStyle(color, fontSize);
-  return <Text style={styles.text}>{text}</Text>;
+  return (
+    <Text style={styles.text} allowFontScaling={false}>
+      {text}
+    </Text>
+  );
 };
 
 const createStyle = (color = lightTheme.text, fontSize = fontSizes.f14) => {

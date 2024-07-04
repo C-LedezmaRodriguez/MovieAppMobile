@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import MovieDetailScreen from '../screens/MovieDetailScreen.tsx';
 import useAppNavigation from '../hooks/useAppNavigation.tsx';

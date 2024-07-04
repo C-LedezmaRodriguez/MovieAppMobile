@@ -26,9 +26,11 @@ const heights = {
   h60: heightScreen * 0.6,
   h50: heightScreen * 0.5,
   h40: heightScreen * 0.4,
+  h35: heightScreen * 0.35,
   h30: heightScreen * 0.3,
   h20: heightScreen * 0.2,
   h10: heightScreen * 0.1,
+  h5: heightScreen * 0.05,
   h1: heightScreen * 0.01,
 };
 

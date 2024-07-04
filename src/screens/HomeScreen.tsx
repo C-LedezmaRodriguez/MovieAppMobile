@@ -1,25 +1,38 @@
-import {ReactElement} from 'react';
-import {View, StyleSheet} from 'react-native';
+import React, {ReactElement} from 'react';
+import {View, StyleSheet, FlatList} from 'react-native';
 
-import MovieItem from '../components/MovieItem.tsx';
+import MovieList from '../components/MovieList.tsx';
 
-import {Movie} from '../models/Movie';
+import {Movie} from '../models/Movie.ts';
+import {MovieListProps} from '../models/MovieListProps.ts';
 
 type Props = {
-  movies: Movie[];
+  movieProps: MovieListProps[];
   goToMovieDetail: (movie: Movie) => void;
 };
 
-const MovieList = ({movies, goToMovieDetail}: Props): ReactElement => {
+const HomeScreen = ({movieProps, goToMovieDetail}: Props): ReactElement => {
+  if (!movieProps || movieProps?.length === 0) {
+    return <View />;
+  }
+
+  const renderMovieList = (movieListProps: MovieListProps) => {
+    return (
+      <MovieList
+        movies={movieListProps.movies}
+        title={movieListProps.title}
+        subtitle={movieListProps.subtitle}
+        goToMovieDetail={goToMovieDetail}
+      />
+    );
+  };
+
   return (
     <View style={styles.container}>
-      {movies.map(movie => (
-        <MovieItem
-          key={movie.id}
-          movie={movie}
-          goToMovieDetail={goToMovieDetail}
-        />
-      ))}
+      <FlatList
+        data={movieProps}
+        renderItem={({item}) => renderMovieList(item)}
+      />
     </View>
   );
 };
@@ -31,4 +44,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MovieList;
+export default HomeScreen;
