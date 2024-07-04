@@ -1,8 +1,8 @@
 import mockData from '../data/mockDataMovie.json';
 import {Movie} from '../models/Movie.ts';
 
-const poster_URL =
-  'https://static.tvtropes.org/pmwiki/pub/images/6fa79a3251cbf9c1c929aaec71ebb1309c57566a61d490045de285525914f285_ur12002c1600_ri__waifu2x_art_noise1.png';
+const posterPath = 'https://image.tmdb.org/t/p/w500';
+
 const convertMovieMockDataToMovie = (): Movie[] => {
   return mockData.map(movie => {
     return {
@@ -14,8 +14,7 @@ const convertMovieMockDataToMovie = (): Movie[] => {
       original_title: movie.original_title,
       overview: movie.overview,
       popularity: movie.popularity,
-      // poster_path: movie.poster_path,
-      poster_path: poster_URL,
+      poster_path: movie.poster_path,
       release_date: new Date(movie.release_date),
       title: movie.title,
       video: movie.video,
@@ -25,8 +24,13 @@ const convertMovieMockDataToMovie = (): Movie[] => {
   });
 };
 
+const getPosterUrl = (movie: Movie): string => {
+  return `${posterPath}${movie.poster_path}`;
+};
+
 const MovieUtils = {
   convertMovieMockDataToMovie,
+  getPosterUrl,
 };
 
 export default MovieUtils;
